@@ -1,0 +1,360 @@
+/* ─────────────────────────────────────────
+   Login / Sign-Up Popup — Premium Redesign
+   ───────────────────────────────────────── */
+
+/* ── Overlay ── */
+.lp-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 16px;
+}
+
+/* ── Card ── */
+.lp-card {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    max-height: 92vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 32px 32px 24px;
+    box-shadow:
+        0 0 0 1px rgba(0,0,0,0.05),
+        0 24px 64px rgba(0, 0, 0, 0.18),
+        0 8px 24px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: lpCardIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom smooth scrollbar */
+.lp-card::-webkit-scrollbar {
+    width: 5px;
+}
+.lp-card::-webkit-scrollbar-track {
+    background: transparent;
+}
+.lp-card::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 4px;
+}
+
+@keyframes lpCardIn {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ── Brand accent dot ── */
+.lp-brand-dot {
+    position: absolute;
+    top: 0;
+    left: 32px;
+    width: 48px;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6347, #ff4c24);
+    border-radius: 0 0 4px 4px;
+}
+
+/* ── Close button ── */
+.lp-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+.lp-close-btn:hover {
+    background: #fee2e2;
+    color: #ef4444;
+    transform: rotate(90deg);
+}
+
+/* ── Header ── */
+.lp-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.lp-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.4px;
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+.lp-subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* ── Error banner ── */
+.lp-error {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    color: #dc2626;
+    font-size: 13px;
+    line-height: 1.4;
+    animation: lpCardIn 0.25s ease forwards;
+}
+
+/* ── Form ── */
+.lp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ── Field ── */
+.lp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.lp-field label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #475569;
+    letter-spacing: 0.2px;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* ── Input wrapper ── */
+.lp-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lp-input-icon {
+    position: absolute;
+    left: 13px;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    transition: color 0.2s ease;
+}
+
+.lp-input-wrap:focus-within .lp-input-icon {
+    color: #ff6347;
+}
+
+.lp-input {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    color: #0f172a;
+    background: #f8fafc;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.lp-input::placeholder {
+    color: #c0cad4;
+}
+
+.lp-input:focus {
+    border-color: #ff6347;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.12);
+}
+
+/* Fix harsh blue browser autofill */
+.lp-input:-webkit-autofill,
+.lp-input:-webkit-autofill:hover,
+.lp-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 40px #f8fafc inset !important;
+    -webkit-text-fill-color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Eye toggle */
+.lp-eye-btn {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    border-radius: 6px;
+    transition: all 0.18s ease;
+}
+.lp-eye-btn:hover {
+    color: #ff6347;
+    background: #fff4f2;
+}
+
+/* ── Terms checkbox ── */
+.lp-terms {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    margin-top: 2px;
+}
+
+.lp-checkbox-native {
+    width: 17px;
+    height: 17px;
+    min-width: 17px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: #ff6347;
+    border-radius: 4px;
+    outline: none;
+    flex-shrink: 0;
+}
+
+.lp-terms span {
+    font-size: 12.5px;
+    color: #64748b;
+    line-height: 1.5;
+    font-family: 'Outfit', sans-serif;
+    user-select: none;
+}
+
+.lp-terms strong {
+    color: #334155;
+    font-weight: 600;
+}
+
+/* ── Submit button ── */
+.lp-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ff6347 0%, #ff4c24 100%);
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    letter-spacing: 0.2px;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 20px rgba(255, 99, 71, 0.35);
+    margin-top: 4px;
+}
+
+.lp-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(255, 99, 71, 0.48);
+    background: linear-gradient(135deg, #ff5236 0%, #ff3a0e 100%);
+}
+
+.lp-submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(255, 99, 71, 0.3);
+}
+
+.lp-submit-btn:disabled {
+    opacity: 0.68;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Button spinner */
+.lp-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: lpSpin 0.7s linear infinite;
+    display: inline-block;
+}
+
+@keyframes lpSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Footer toggle ── */
+.lp-footer {
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+.lp-footer button {
+    background: transparent;
+    border: none;
+    color: #ff6347;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.18s;
+}
+
+.lp-footer button:hover {
+    opacity: 0.75;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+    .lp-card {
+        padding: 24px 18px 18px;
+        border-radius: 20px;
+        max-width: 100%;
+    }
+    .lp-title {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: Outfit;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit
+}
+
+.app {
+  width: 80%;
+  margin: auto;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shutterDown {
+  0% {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(-30px) scaleY(0.95);
+    opacity: 0;
+  }
+  70% {
+    clip-path: inset(0 0 10% 0);
+    opacity: 0.9;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+  }
+}
+
+.slide-down {
+  animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.shutter-down {
+  animation: shutterDown 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: top;
+}

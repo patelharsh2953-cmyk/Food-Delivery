@@ -1,0 +1,127 @@
+.captcha-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 2px 0 6px 0;
+    width: 100%;
+}
+
+.captcha-challenge-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.captcha-svg-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 48px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.captcha-svg-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.captcha-svg-inner svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    border: none !important;
+}
+
+.captcha-skeleton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.captcha-refresh-btn {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    color: #475569;
+    border-radius: 12px;
+    padding: 0 14px;
+    height: 48px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.captcha-refresh-btn:hover {
+    background: #fff4f2;
+    color: #ff6347;
+    border-color: #fecaca;
+}
+
+.spin-icon {
+    animation: captchaSpin 0.8s linear infinite;
+}
+
+@keyframes captchaSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.captcha-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.captcha-icon {
+    position: absolute;
+    left: 13px;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.captcha-input-field {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #0f172a;
+    background: #f8fafc;
+    outline: none;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.2s ease;
+}
+
+.captcha-input-field::placeholder {
+    letter-spacing: normal;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 13px;
+    color: #c0cad4;
+}
+
+.captcha-input-field:focus {
+    border-color: #ff6347;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.12);
+}

@@ -1,0 +1,112 @@
+.food-item {
+    width: 100%;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px #00000015;
+    transition: 0.3s;
+    animation: fadeIn 1s;
+}
+
+.food-item-image {
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.food-item-info {
+    padding: 20px;
+}
+
+.food-item-name-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.food-item-name-rating p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.food-item-name-rating img {
+    width: 70px;
+}
+
+.food-item-desc {
+    color: #676767;
+    font-size: 12px;
+}
+
+.food-item-price {
+    color: tomato;
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 10px 0px;
+}
+
+.food-item-img-container {
+    position: relative;
+}
+
+.food-item-img-container .add,
+.add-icon-btn {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
+    background: #ff6347;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.add-icon-btn:hover {
+    transform: scale(1.1);
+    background: #e55337;
+}
+
+.food-item-counter {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.15);
+}
+
+.food-item-counter .btn-counter-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.food-item-counter .btn-counter-icon.remove {
+    background-color: #ffe8e8;
+}
+
+.food-item-counter .btn-counter-icon.remove:hover {
+    background-color: #ffd1d1;
+}
+
+.food-item-counter .btn-counter-icon.add-green {
+    background-color: #e6f9ed;
+}
+
+.food-item-counter .btn-counter-icon.add-green:hover {
+    background-color: #c8f4d5;
+}

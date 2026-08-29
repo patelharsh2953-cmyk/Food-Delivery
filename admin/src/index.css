@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+  --primary-color: #ff4c24;
+  --primary-hover: #e23744;
+  --primary-light: #fff4f2;
+  --primary-border: #ffd1c7;
+  --text-main: #262626;
+  --text-sub: #49557e;
+  --text-muted: #676767;
+  --bg-main: #fcfcfc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0px 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0px 8px 24px rgba(0, 0, 0, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --sidebar-width: 250px;
+  --header-height: 70px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: 'Outfit', sans-serif;
+  transition: all 0.2s ease;
+}
+
+input, select, textarea {
+  font-family: 'Outfit', sans-serif;
+  outline: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

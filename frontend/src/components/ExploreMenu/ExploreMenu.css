@@ -1,0 +1,246 @@
+/* ══════════════════════════════════════════
+   ExploreMenu — Fixed Layout
+   All 8 categories in one row on desktop,
+   tight vertical spacing, touch scroll on mobile
+   ══════════════════════════════════════════ */
+
+/* ── Section wrapper ── */
+.explore-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 24px 0 0;
+}
+
+/* ── Header ── */
+.em-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.em-title {
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.4px;
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.2;
+}
+
+.em-subtitle {
+    font-size: clamp(13px, 1.3vw, 15px);
+    color: #64748b;
+    line-height: 1.65;
+    margin: 0;
+    font-weight: 400;
+    max-width: 580px;
+}
+
+/* ══════════════════════════════════════════
+   Category list — 8 items, single row desktop
+   ══════════════════════════════════════════ */
+.em-list {
+    display: grid;
+    /* 8 equal columns — all categories fit without overflow */
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+    width: 100%;
+    /* NO overflow-x on desktop */
+}
+
+/* ── Individual card ── */
+.em-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 4px 14px;
+    border-radius: 20px;
+    border: 1.5px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    outline: none;
+    /* No min-width — grid handles sizing */
+}
+
+.em-item:hover {
+    background: #fafafa;
+    border-color: #f1f5f9;
+    transform: translateY(-3px);
+}
+
+.em-item:focus-visible {
+    outline: 2px solid #ff6347;
+    outline-offset: 2px;
+}
+
+.em-item-active {
+    background: #fff4f2;
+    border-color: #ffd1c7;
+}
+
+.em-item-active:hover {
+    background: #fff0ed;
+    transform: translateY(-3px);
+}
+
+/* ── Ring ── */
+.em-img-ring {
+    /* Fluid size: scales with grid column width */
+    width: min(100px, 10vw);
+    height: min(100px, 10vw);
+    /* Enforce readable minimum */
+    min-width: 72px;
+    min-height: 72px;
+    border-radius: 50%;
+    border: 2.5px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    background: #f1f5f9;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    flex-shrink: 0;
+}
+
+.em-img-ring-active {
+    border-color: #ff6347;
+    box-shadow:
+        0 0 0 4px rgba(255, 99, 71, 0.18),
+        0 4px 18px rgba(255, 99, 71, 0.18);
+    background: #fff4f2;
+}
+
+/* ── Inner image clip ── */
+.em-img-wrap {
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.em-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: block;
+}
+
+.em-item:hover .em-img {
+    transform: scale(1.1);
+}
+
+.em-item-active .em-img {
+    transform: scale(1.04);
+}
+
+/* ── Label ── */
+.em-label {
+    margin-top: 10px;
+    font-size: clamp(11px, 1.1vw, 14px);
+    font-weight: 500;
+    color: #64748b;
+    text-align: center;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+    white-space: nowrap;
+    font-family: 'Outfit', sans-serif;
+    line-height: 1.3;
+}
+
+.em-label-active {
+    color: #ff6347;
+    font-weight: 700;
+}
+
+.em-item:hover .em-label:not(.em-label-active) {
+    color: #1e293b;
+}
+
+/* ── Active dot ── */
+.em-active-dot {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background: #ff6347;
+    border-radius: 50%;
+    animation: dotPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes dotPop {
+    from { opacity: 0; transform: translateX(-50%) scale(0); }
+    to   { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+/* ── Divider ── */
+.em-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0 20%, #e2e8f0 80%, transparent);
+    margin: 28px 0 0;
+}
+
+/* ══════════════════════════════════════════
+   Responsive Breakpoints
+   ══════════════════════════════════════════ */
+
+/* Tablet — 4 columns, 2 rows, touch-scroll option */
+@media (max-width: 860px) {
+    .explore-menu { padding: 20px 0 0; }
+    .em-header { margin-bottom: 18px; }
+
+    /* Switch to horizontal scroll on tablet/mobile */
+    .em-list {
+        grid-template-columns: none; /* disable grid */
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        gap: 10px;
+        padding-bottom: 8px;
+    }
+
+    .em-list::-webkit-scrollbar { display: none; }
+
+    .em-item {
+        flex-shrink: 0;
+        min-width: 88px;
+        padding: 10px 8px 12px;
+    }
+
+    .em-img-ring {
+        width: 80px !important;
+        height: 80px !important;
+        min-width: 80px;
+        min-height: 80px;
+    }
+
+    .em-label { font-size: 12.5px; }
+}
+
+@media (max-width: 500px) {
+    .explore-menu { padding: 16px 0 0; }
+    .em-title    { font-size: 21px; }
+    .em-subtitle { font-size: 13px; }
+    .em-item     { min-width: 76px; padding: 8px 6px 10px; }
+
+    .em-img-ring {
+        width: 68px !important;
+        height: 68px !important;
+        min-width: 68px;
+        min-height: 68px;
+    }
+
+    .em-label { font-size: 11.5px; margin-top: 8px; }
+    .em-divider { margin: 20px 0 0; }
+}

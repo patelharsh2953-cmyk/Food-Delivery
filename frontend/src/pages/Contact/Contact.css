@@ -1,0 +1,251 @@
+.contact-page {
+  padding: 40px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #262626;
+  font-family: 'Outfit', sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.contact-header h1 {
+  font-size: max(3vw, 26px);
+  font-weight: 700;
+  color: #262626;
+  margin-bottom: 10px;
+}
+
+.contact-header h1 span {
+  color: #ff6347;
+}
+
+.contact-header p {
+  color: #49557e;
+  font-size: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Contact Info Card */
+.contact-info-card {
+  background: #ffffff;
+  padding: 35px 30px;
+  border-radius: 20px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.contact-info-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #262626;
+}
+
+.info-subtext {
+  color: #808080;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info-icon {
+  width: 44px;
+  height: 44px;
+  background-color: #fff2ef;
+  color: #ff6347;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.info-details h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 4px;
+}
+
+.info-details p {
+  font-size: 14px;
+  color: #676767;
+  line-height: 1.4;
+}
+
+/* Contact Form Card */
+.contact-form-card {
+  background: #ffffff;
+  padding: 35px 30px;
+  border-radius: 20px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.contact-form-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #262626;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #454545;
+}
+
+.input-group input,
+.input-group textarea {
+  padding: 12px 16px;
+  border: 1px solid #c9c9c9;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  background-color: #fbfbfb;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #ff6347;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.1);
+}
+
+.input-group input.input-error,
+.input-group textarea.input-error {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.error-text {
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.submit-btn {
+  background-color: #ff6347;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #e55337;
+  box-shadow: 0 4px 15px rgba(255, 99, 71, 0.3);
+}
+
+.submit-btn:disabled {
+  background-color: #ffa494;
+  cursor: not-allowed;
+}
+
+/* Status Alert Banners */
+.alert-banner {
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.alert-banner.success {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.alert-banner.error {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 580px) {
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .contact-info-card,
+  .contact-form-card {
+    padding: 24px 20px;
+  }
+}

@@ -1,0 +1,219 @@
+.about-page {
+  padding: 40px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #262626;
+  font-family: 'Outfit', sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Section */
+.about-hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #fff4f2 0%, #ffeae6 100%);
+  border-radius: 20px;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 20px rgba(255, 99, 71, 0.08);
+}
+
+.about-hero h1 {
+  font-size: max(3.2vw, 28px);
+  font-weight: 700;
+  color: #262626;
+  margin-bottom: 16px;
+}
+
+.about-hero h1 span {
+  color: #ff6347;
+}
+
+.about-hero p {
+  font-size: max(1.1vw, 15px);
+  color: #49557e;
+  max-width: 720px;
+  margin: 0 auto 28px auto;
+  line-height: 1.6;
+}
+
+.about-cta-btn {
+  background-color: #ff6347;
+  color: white;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 99, 71, 0.3);
+}
+
+.about-cta-btn:hover {
+  background-color: #e55337;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 99, 71, 0.4);
+}
+
+/* Mission & Vision Section */
+.about-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.about-card {
+  background: #ffffff;
+  padding: 35px 30px;
+  border-radius: 16px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+  border-color: #ffe1e1;
+}
+
+.card-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background-color: #fff2ef;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.about-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 12px;
+}
+
+.about-card p {
+  color: #676767;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Why Choose Us Section */
+.section-title-wrapper {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title-wrapper h2 {
+  font-size: max(2.4vw, 24px);
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 8px;
+}
+
+.section-title-wrapper p {
+  color: #808080;
+  font-size: 15px;
+}
+
+.why-choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.feature-box {
+  background-color: #ffffff;
+  padding: 30px 24px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #eaeaea;
+  transition: all 0.3s ease;
+}
+
+.feature-box:hover {
+  border-color: #ff6347;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(255, 99, 71, 0.12);
+}
+
+.feature-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #fff4f2;
+  color: #ff6347;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 16px auto;
+}
+
+.feature-box h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 10px;
+}
+
+.feature-box p {
+  font-size: 14px;
+  color: #747474;
+  line-height: 1.5;
+}
+
+/* Statistics Section */
+.stats-banner {
+  background: #323232;
+  border-radius: 20px;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.stat-item h3 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ff6347;
+  margin-bottom: 6px;
+}
+
+.stat-item p {
+  font-size: 14px;
+  color: #d9d9d9;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 40px 16px;
+    border-radius: 14px;
+  }
+  .stats-banner {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 30px 15px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-banner {
+    grid-template-columns: 1fr;
+  }
+}

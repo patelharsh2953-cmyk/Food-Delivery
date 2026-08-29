@@ -1,0 +1,240 @@
+.payments-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pay-id-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pay-id-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.order-id-sub {
+  font-size: 13px;
+  color: var(--text-sub);
+  font-family: monospace;
+}
+
+.pay-amount-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.method-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background-color: #f1f5f9;
+  color: var(--text-sub);
+}
+
+/* Transaction Details Modal Styles */
+.payment-receipt-box,
+.modal-body.payment-receipt-box {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(88vh - 70px);
+}
+
+.receipt-status-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 16px;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.check-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #dcfce7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.receipt-amount-display {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+  margin: 2px 0;
+}
+
+.receipt-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 50px;
+  border: 1px solid transparent;
+}
+
+.receipt-pill-badge.status-paid {
+  background-color: #dcfce7;
+  color: #15803d;
+  border-color: #bbf7d0;
+}
+
+.receipt-pill-badge.status-pending {
+  background-color: #fef3c7;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+.receipt-pill-badge.status-refunded {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.badge-dot-bullet {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* Modern Transaction Key-Value Card */
+.receipt-details-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.rec-detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+  gap: 16px;
+  transition: background-color 0.15s ease;
+}
+
+.rec-detail-row:hover {
+  background-color: #f8fafc;
+}
+
+.rec-detail-row.last-row {
+  border-bottom: none;
+}
+
+.rec-label {
+  color: #64748b;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.rec-val {
+  color: #0f172a;
+  font-weight: 700;
+  text-align: right;
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.rec-val.font-mono {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 12.5px;
+}
+
+.rec-val.order-id-highlight {
+  color: #ff4c24;
+}
+
+@media (max-width: 480px) {
+  .payment-receipt-box,
+  .modal-body.payment-receipt-box {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .receipt-status-banner {
+    padding: 18px 12px;
+  }
+
+  .receipt-amount-display {
+    font-size: 26px;
+  }
+
+  .rec-detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 12px 14px;
+  }
+
+  .rec-val {
+    text-align: left;
+  }
+}
+
+/* Payment Status Dropdown Control */
+.payment-status-select {
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 28px;
+}
+
+.payment-status-select.status-paid {
+  background-color: #dcfce7;
+  color: #15803d;
+  border-color: #bbf7d0;
+}
+
+.payment-status-select.status-pending {
+  background-color: #fef3c7;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+.payment-status-select.status-refunded {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.payment-status-select:focus {
+  box-shadow: 0 0 0 3px rgba(255, 76, 36, 0.15);
+}
+
