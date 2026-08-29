@@ -18,19 +18,8 @@ import userModel from '../models/userModel.js';
 import adminModel from '../models/adminModel.js';
 import offerModel from '../models/offerModel.js';
 
-const MONGODB_URI = process.env.MONOG_URL || "mongodb+srv://patelharsh2953_db_user:9h5H2Rsbpoul5xPN@cluster0.mektegj.mongodb.net/food_del?appName=Cluster0";
-
-// Ensure /food_del database name is targeted
-const getDbUri = (uri) => {
-    if (!uri) return "mongodb+srv://patelharsh2953_db_user:9h5H2Rsbpoul5xPN@cluster0.mektegj.mongodb.net/food_del?appName=Cluster0";
-    if (uri.includes('.mongodb.net/?')) {
-        return uri.replace('.mongodb.net/?', '.mongodb.net/food_del?');
-    }
-    if (uri.endsWith('.mongodb.net/')) {
-        return uri + 'food_del';
-    }
-    return uri;
-};
+const MONGODB_URI = process.env.MONGO_URL || process.env.MONOG_URL || "mongodb+srv://patelharsh2953_db_user:9h5H2Rsbpoul5xPN@cluster0.mektegj.mongodb.net/?appName=Cluster0";
+const DB_NAME = process.env.DB_NAME || "food_del";
 
 const cleanDatabase = async () => {
     try {
@@ -38,9 +27,8 @@ const cleanDatabase = async () => {
         console.log('   🧹 FOODDEL DATABASE DATA CLEANING SEEDER 🧹');
         console.log('======================================================\n');
         
-        const uri = getDbUri(MONGODB_URI);
-        console.log('Connecting to MongoDB...');
-        await mongoose.connect(uri);
+        console.log(`Connecting to MongoDB (Database: ${DB_NAME})...`);
+        await mongoose.connect(MONGODB_URI, { dbName: DB_NAME });
         console.log('Connected to Database successfully!\n');
 
         // 1. Check current counts before deletion
