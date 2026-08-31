@@ -118,8 +118,8 @@ const OrderCard = ({ order, url, token }) => {
 
   const { step: activeStep, percent: progressPercent } = getStepProgress(status);
 
-  const formattedDate = order.createdAt 
-    ? new Date(order.createdAt).toLocaleDateString('en-IN', {
+  const formattedDate = (order.date || order.createdAt) 
+    ? new Date(order.date || order.createdAt).toLocaleDateString('en-IN', {
         day: 'numeric',
         month: 'short',
         year: 'numeric'

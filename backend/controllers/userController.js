@@ -145,6 +145,45 @@ const registerUser = async (req, res) => {
 };
 
 // ─────────────────────────────────────────
+// POST /api/user/reset-password
+// ─────────────────────────────────────────
+const resetPassword = async (req, res) => {
+    const { email, newPassword } = req.body;
+    if (!email || !newPassword) {
+        return res.status(400).json({ success: false, message: "Email and new password are required." });
+    }
+    if (newPassword.length < 6) {
+        return res.status(400).json({ success: false, message: "New password must be at least 6 characters long." });
+    }
+    try {
+        const normalizedEmail = email.toLowerCase().trim();
+        const user = await userModel.findOne({ email: normalizedEmail, isDeleted: { $ne: true } });
+        if (!user) {
+            return res.status(404).json({ success: false, message: "No account found with this email. Please check the spelling or Sign Up." });
+        }
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(newPassword, salt);
+        await user.save();
+
+        const token = createToken(user._id, user.role || "user");
+        res.json({
+            success: true,
+            message: "Password reset successful! You are now logged in.",
+            token,
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role || "user"
+            }
+        });
+    } catch (error) {
+        console.error("resetPassword error:", error);
+        res.status(500).json({ success: false, message: "Error resetting password." });
+    }
+};
+
+// ─────────────────────────────────────────
 // GET /api/user/verify  (Profile verification)
 // ─────────────────────────────────────────
 const verifyUser = async (req, res) => {
@@ -290,4 +329,4 @@ const purgeUser = async (req, res) => {
     }
 };
 
-export { loginUser, registerUser, verifyUser, listUsers, updateUser, removeUser, restoreUser, purgeUser };
+export { loginUser, registerUser, resetPassword, verifyUser, listUsers, updateUser, removeUser, restoreUser, purgeUser };

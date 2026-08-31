@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import { Routes, Route, useLocation } from 'react-router-dom'
@@ -10,6 +10,7 @@ import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
 import ProductDetails from './pages/ProductDetails/ProductDetails'
 import LoginPopup from './components/LoginPopup/LoginPopup'
+import { StoreContext } from './context/StoreContext'
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -20,13 +21,12 @@ const ScrollToTop = () => {
 };
 
 const App = () => {
-
-  const [showLogin, setShowLogin] = useState(false);
+  const { showLogin, setShowLogin } = useContext(StoreContext);
 
   return (
     <>
       <ScrollToTop />
-      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : <></>}
+      {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> : null}
       <div className='app'>
         <Navbar setShowLogin={setShowLogin} />
         <Routes>

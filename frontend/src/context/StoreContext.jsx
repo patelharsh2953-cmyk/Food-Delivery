@@ -7,7 +7,9 @@ const StoreContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState({});
     const url = "http://localhost:4000";
-    const [token, setToken] = useState("");
+    const [token, setToken] = useState(localStorage.getItem("token") || "");
+    const [showLogin, setShowLogin] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     const [food_list, setFoodList] = useState([]);
     const [category_list, setCategoryList] = useState([]);
     const [offersList, setOffersList] = useState([]);
@@ -136,6 +138,7 @@ const StoreContextProvider = (props) => {
     };
 
     const loadCartData = async (userToken) => {
+        if (!userToken) return;
         try {
             const response = await axios.post(url + "/api/cart/get", {}, { headers: { token: userToken } });
             if (response.data && response.data.cartData) {
@@ -143,18 +146,30 @@ const StoreContextProvider = (props) => {
             }
         } catch (err) {
             console.error("Error loading cart data:", err);
+            if (err.response?.status === 401) {
+                setToken("");
+                localStorage.removeItem("token");
+            }
         }
     };
 
     useEffect(() => {
         async function loadData() {
-            await fetchFoodList();
-            await fetchCategoryList();
-            await fetchOffersList();
-            const storedToken = localStorage.getItem("token");
-            if (storedToken) {
-                setToken(storedToken);
-                await loadCartData(storedToken);
+            try {
+                await Promise.allSettled([
+                    fetchFoodList(),
+                    fetchCategoryList(),
+                    fetchOffersList()
+                ]);
+                const storedToken = localStorage.getItem("token");
+                if (storedToken) {
+                    setToken(storedToken);
+                    await loadCartData(storedToken);
+                }
+            } catch (error) {
+                console.error("Error initializing store:", error);
+            } finally {
+                setIsLoaded(true);
             }
         }
         loadData();
@@ -171,6 +186,9 @@ const StoreContextProvider = (props) => {
         url,
         token,
         setToken,
+        showLogin,
+        setShowLogin,
+        isLoaded,
         loadCartData,
         offersList,
         fetchOffersList,

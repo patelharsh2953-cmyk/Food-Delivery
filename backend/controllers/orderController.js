@@ -111,7 +111,7 @@ const userOrders = async (req, res) => {
         const orders = await orderModel.find({ 
             userId: req.body.userId,
             isDeleted: { $ne: true }
-        }).sort({ createdAt: -1 });
+        }).sort({ date: -1, _id: -1 });
 
         res.json({ success: true, data: orders });
     } catch (error) {
@@ -147,7 +147,7 @@ const listOrders = async (req, res) => {
             orderModel,
             query,
             req,
-            { createdAt: -1 }
+            { date: -1, _id: -1 }
         );
 
         res.json({

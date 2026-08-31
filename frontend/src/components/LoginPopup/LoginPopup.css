@@ -8,9 +8,9 @@
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(15, 23, 42, 0.55);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,20 +22,20 @@
 .lp-card {
     position: relative;
     width: 100%;
-    max-width: 440px;
+    max-width: 450px;
     max-height: 92vh;
     overflow-y: auto;
     overflow-x: hidden;
     background: #ffffff;
     border-radius: 24px;
-    padding: 32px 32px 24px;
+    padding: 28px 30px 24px;
     box-shadow:
-        0 0 0 1px rgba(0,0,0,0.05),
-        0 24px 64px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(0,0,0,0.06),
+        0 24px 64px rgba(0, 0, 0, 0.2),
         0 8px 24px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
     animation: lpCardIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -66,7 +66,7 @@
 .lp-brand-dot {
     position: absolute;
     top: 0;
-    left: 32px;
+    left: 30px;
     width: 48px;
     height: 4px;
     background: linear-gradient(90deg, #ff6347, #ff4c24);
@@ -97,12 +97,50 @@
     transform: rotate(90deg);
 }
 
+/* ── Segmented Navigation Tabs ── */
+.lp-tabs-container {
+    display: flex;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 14px;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.lp-tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #64748b;
+    font-size: 13.5px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lp-tab-btn:hover {
+    color: #1e293b;
+}
+
+.lp-tab-btn.active {
+    background: #ffffff;
+    color: #ff6347;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
 /* ── Header ── */
 .lp-header {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    margin-top: 4px;
 }
 
 .lp-title {
@@ -119,22 +157,58 @@
     color: #64748b;
     margin: 0;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.45;
 }
 
 /* ── Error banner ── */
 .lp-error {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 14px;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
     background: #fef2f2;
     border: 1px solid #fecaca;
-    border-radius: 12px;
+    border-radius: 14px;
     color: #dc2626;
     font-size: 13px;
-    line-height: 1.4;
+    line-height: 1.45;
     animation: lpCardIn 0.25s ease forwards;
+}
+
+.lp-inline-action-btn {
+    background: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    width: fit-content;
+    transition: all 0.2s ease;
+}
+
+.lp-inline-action-btn:hover {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+/* ── Success banner ── */
+.lp-success {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: 14px;
+    color: #059669;
+    font-size: 13.5px;
+    font-weight: 600;
 }
 
 /* ── Form ── */
@@ -157,6 +231,23 @@
     color: #475569;
     letter-spacing: 0.2px;
     font-family: 'Outfit', sans-serif;
+}
+
+.lp-forgot-link {
+    background: transparent;
+    border: none;
+    color: #ff6347;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s;
+}
+
+.lp-forgot-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
 }
 
 /* ── Input wrapper ── */
@@ -182,7 +273,7 @@
 
 .lp-input {
     width: 100%;
-    padding: 10px 14px 10px 40px;
+    padding: 10.5px 14px 10.5px 40px;
     border: 1.5px solid #e2e8f0;
     border-radius: 12px;
     font-size: 14px;
@@ -194,7 +285,7 @@
 }
 
 .lp-input::placeholder {
-    color: #c0cad4;
+    color: #cbd5e1;
 }
 
 .lp-input:focus {
@@ -254,9 +345,9 @@
 }
 
 .lp-terms span {
-    font-size: 12.5px;
+    font-size: 12px;
     color: #64748b;
-    line-height: 1.5;
+    line-height: 1.45;
     font-family: 'Outfit', sans-serif;
     user-select: none;
 }
@@ -269,7 +360,7 @@
 /* ── Submit button ── */
 .lp-submit-btn {
     width: 100%;
-    padding: 12px;
+    padding: 12.5px;
     background: linear-gradient(135deg, #ff6347 0%, #ff4c24 100%);
     border: none;
     border-radius: 12px;
@@ -329,6 +420,10 @@
     font-family: 'Outfit', sans-serif;
 }
 
+.lp-footer p {
+    margin: 0;
+}
+
 .lp-footer button {
     background: transparent;
     border: none;
@@ -350,7 +445,7 @@
 /* ── Responsive ── */
 @media (max-width: 480px) {
     .lp-card {
-        padding: 24px 18px 18px;
+        padding: 22px 18px 18px;
         border-radius: 20px;
         max-width: 100%;
     }

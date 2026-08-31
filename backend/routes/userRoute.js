@@ -1,11 +1,12 @@
 import express from "express";
-import { loginUser, registerUser, verifyUser, listUsers, updateUser, removeUser, restoreUser, purgeUser } from "../controllers/userController.js";
+import { loginUser, registerUser, resetPassword, verifyUser, listUsers, updateUser, removeUser, restoreUser, purgeUser } from "../controllers/userController.js";
 import { validateUserRegistration, validateUserLogin } from "../middleware/validators.js";
 
 const userRouter = express.Router();
 
 userRouter.post("/register", validateUserRegistration, registerUser);
 userRouter.post("/login", validateUserLogin, loginUser);
+userRouter.post("/reset-password", resetPassword);
 userRouter.get("/verify", verifyUser);
 userRouter.get("/list", listUsers);
 userRouter.post("/update", updateUser);

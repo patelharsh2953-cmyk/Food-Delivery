@@ -27,7 +27,9 @@ const Cart = () => {
     applyCoupon,
     removeCoupon,
     getDiscountAmount,
-    getFinalTotalAmount
+    getFinalTotalAmount,
+    token,
+    setShowLogin
   } = useContext(StoreContext);
 
   const [couponInput, setCouponInput] = useState('');
@@ -35,6 +37,19 @@ const Cart = () => {
   const [isApplying, setIsApplying] = useState(false);
 
   const navigate = useNavigate();
+
+  const handleProceedToCheckout = () => {
+    if (subtotal === 0) {
+      setCouponStatus({ type: 'error', message: 'Your cart is empty. Add delicious items to continue!' });
+      return;
+    }
+    const currentToken = token || localStorage.getItem('token');
+    if (!currentToken) {
+      setShowLogin(true);
+      return;
+    }
+    navigate('/order');
+  };
 
   const handleApplyCoupon = async (codeToApply) => {
     const code = (codeToApply || couponInput).trim().toUpperCase();
@@ -276,7 +291,7 @@ const Cart = () => {
 
             <button 
               className="checkout-btn" 
-              onClick={() => navigate('/order')} 
+              onClick={handleProceedToCheckout} 
               disabled={subtotal === 0}
             >
               <span>Proceed to Checkout</span>
